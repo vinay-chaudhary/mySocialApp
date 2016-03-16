@@ -1,0 +1,14 @@
+{
+  "name": "starter-node-angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "oclazyload": "latest",
+    "angular-route": "latest",
+    "angular-ui-router": "^0.2.18",
+    "angular-cookies": "^1.5.0"
+  }
+}
