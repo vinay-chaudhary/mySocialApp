@@ -4,6 +4,7 @@ var fs=require('fs');
 var User=require('./models/User');
 var router = express.Router();
 var passport = require('passport');
+var c=require('../config/passport');
 router.post('/api/signup', function(req,res){
     console.log(req.body);
     User.register(new User({ username: req.body.username,name:req.body.name,number:req.body.number,dob:req.body.dob}),req.body.password , function(err, account) {
@@ -52,6 +53,15 @@ router.post('/api/signup', function(req,res){
     // router.get('*',function(req,res){
     //  res.sendfile('./public/index.html');
     // });
+    router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+    // handle the callback after facebook has authenticated the user
+    router.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect : '/profile',
+            failureRedirect : '/'
+        })
+    );
     router.get('/logout', function(req, res) {
         console.log('hello4');
       req.logout();

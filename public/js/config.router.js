@@ -30,7 +30,7 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
+                        return $ocLazyLoad.load(['js/controllers/chart.js','js/controllers/signout.js']);
                     }]
                   }
               })
@@ -40,7 +40,7 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
+                        return $ocLazyLoad.load(['js/controllers/chart.js','js/controllers/signout.js']);
                     }]
                   }
               })
@@ -331,6 +331,7 @@ angular.module('app')
                       }]
                   }
               })
+
               .state('access.forgotpwd', {
                   url: '/forgotpwd',
                   templateUrl: 'tpl/page_forgotpwd.html'
@@ -506,6 +507,7 @@ angular.module('app')
                   }
               })
                 .state('music.home', {
+
                     url: '/home',
                     templateUrl: 'tpl/music.home.html'
                 })
@@ -531,4 +533,18 @@ angular.module('app')
                 })
       }
     ]
-  );
+  ).run(function ( $rootScope,userService,$state) {
+
+    $rootScope.$on('$stateChangeStart',
+        function (event, next, current) {
+            // console.log("hello2063");
+
+            if (!userService.getCookieData()) {
+                // console.log($location.path());
+                // console.log(AuthService.isLoggedIn());
+                $state.go('access.signin');
+                // console.log($location.path());
+                //$route.reload();
+            }
+        });
+});

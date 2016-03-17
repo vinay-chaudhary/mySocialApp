@@ -161,7 +161,7 @@
         <!-- / link and dropdown -->
 
         <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl" >
           <div class="form-group">
             <div class="input-group">
               <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
@@ -236,7 +236,7 @@
               <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
+            <ul class="dropdown-menu animated fadeInRight w" >
               <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
                 <div>
                   <p>300mb of 500mb used</p>
@@ -259,8 +259,8 @@
                 </a>
               </li>
               <li class="divider"></li>
-              <li>
-                <a ui-sref="access.signin">Logout</a>
+              <li ng-controller="SignoutFormController">
+                <a ng-click="logout()">Logout</a>
               </li>
             </ul>
             <!-- / dropdown -->

@@ -1,19 +1,19 @@
 angular.module('CookieService',["ngCookies"]).factory("userService", [
-    "$cookies", function($cookies) {
+    "$cookieStore", function($cookieStore) {
         var userName = "";
 
         return {
             setCookieData: function(username) {
                 userName = username;
-                $cookies.put("userName", username);
+                $cookieStore.put("userName", username);
             },
             getCookieData: function() {
-                userName = $cookies.get("userName");
+                userName = $cookieStore.get("userName");
                 return userName;
             },
             clearCookieData: function() {
                 userName = "";
-                $cookies.remove("userName");
+                $cookieStore.remove("userName");
             }
         }
     }
