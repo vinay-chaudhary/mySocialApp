@@ -4971,6 +4971,11 @@ a.text-#000000:hover {
   content: "";
 }
 
+.tour-tip .tour-content-wrapper {
+  padding: 1.125em 3.25em 1.5em 1.5em !important;
+}
+
+
 .butterbar.active {
   -webkit-animation: changebar 2.25s infinite 0.75s;
      -moz-animation: changebar 2.25s infinite 0.75s;

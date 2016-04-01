@@ -22,6 +22,9 @@ else{
 }});
 var debug = require('debug')('passport-mongo');
 var User=require('./app/models/User');
+require('./app/models/post');
+require('./app/models/comment');
+require('./app/models/friend');
 
 //require('./app/routes');
 var routes=require('./app/routes');

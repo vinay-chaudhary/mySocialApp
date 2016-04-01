@@ -17,7 +17,7 @@
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}" ng-controller="SignoutFormController">
         <!-- buttons -->
         <div class="nav navbar-nav hidden-xs">
           <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
@@ -259,7 +259,7 @@
                 </a>
               </li>
               <li class="divider"></li>
-              <li ng-controller="SignoutFormController">
+              <li >
                 <a ng-click="logout()">Logout</a>
               </li>
             </ul>

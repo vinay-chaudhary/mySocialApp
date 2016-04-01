@@ -1,12 +1,12 @@
 <div class="bg-light lter b-b wrapper-md">
   <h1 class="m-n font-thin h3"><i class="icon-magnifier i-sm m-r-sm"></i> Search</h1>
 </div>
-<div class="wrapper-md">
+<div class="wrapper-md" ng-controller="SearchController">
   <form action="#" class="m-b-md">
     <div class="input-group">
-      <input type="text" class="form-control input-lg" placeholder="Type keyword">
+      <input type="text" class="form-control input-lg" ng-model="searchItem" placeholder="Type keyword">
       <span class="input-group-btn">
-        <button class="btn btn-lg btn-default" type="button">Search</button>
+        <button class="btn btn-lg btn-default" type="button" ng-click="searchItems()">Search</button>
       </span>
     </div>
   </form>

@@ -20,13 +20,11 @@ var User = new Schema({
 	number:{type:Number},
 	userType: {
 		type: Schema.ObjectId,
-		ref: 'UserType',
-		required: 'Signup As field is required.'
+		ref: 'UserType'
 	},
 	roles: [{
 		type: Schema.ObjectId,
-		ref: 'Role',
-		required: true
+		ref: 'Role'
 	}]
 });
 

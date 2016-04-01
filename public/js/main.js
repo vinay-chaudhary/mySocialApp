@@ -44,6 +44,7 @@ angular.module('app')
       } else {
         $localStorage.settings = $scope.app.settings;
       }
+      $scope.currentStep =0;
       $scope.$watch('app.settings', function(){
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.

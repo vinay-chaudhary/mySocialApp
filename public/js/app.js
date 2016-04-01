@@ -15,5 +15,9 @@ angular.module('app', [
     'ui.validate',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'CookieService'
+    'CookieService',
+    'lr.upload',
+    'infinite-scroll',
+    'angularSpinner',
+    'angular-tour'
 ]);

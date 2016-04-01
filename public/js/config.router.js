@@ -22,7 +22,13 @@ angular.module('app')
               .state('app', {
                   abstract: true,
                   url: '/app',
-                  templateUrl: 'tpl/app.html'
+                  templateUrl: 'modules/core/views/app.html',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['modules/core/controllers/signout.js']);
+                    }]
+                  }
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
@@ -30,7 +36,7 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js','js/controllers/signout.js']);
+                        return $ocLazyLoad.load(['js/controllers/chart.js']);
                     }]
                   }
               })
@@ -40,7 +46,7 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js','js/controllers/signout.js']);
+                        return $ocLazyLoad.load(['js/controllers/chart.js']);
                     }]
                   }
               })
@@ -280,15 +286,48 @@ angular.module('app')
               })
               .state('app.page.profile', {
                   url: '/profile',
-                  templateUrl: 'tpl/page_profile.html'
+                  templateUrl: 'modules/profile/views/page_profile.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                          function( $ocLazyLoad){
+                              return $ocLazyLoad.load('modules/profile/controllers/ProfileController.js');
+                          }]
+                  }
+              })
+              .state('app.page.profille', {
+                  url: '/profille/:id',
+                  templateUrl: 'modules/profile/views/page_friendprofile.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                          function( $ocLazyLoad){
+                              return $ocLazyLoad.load('modules/profile/controllers/FriendProfileController.js');
+                          }]
+                  }
               })
               .state('app.page.post', {
                   url: '/post',
-                  templateUrl: 'tpl/page_post.html'
+
+                  templateUrl: 'modules/post/views/page_post.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                          function( $ocLazyLoad ){
+                              return $ocLazyLoad.load('textAngular').then(
+                                  function(){
+                                      return $ocLazyLoad.load('modules/post/controllers/PostController.js' );
+                                  }
+                              );
+                          }]
+                  }
               })
               .state('app.page.search', {
                   url: '/search',
-                  templateUrl: 'tpl/page_search.html'
+                  templateUrl: 'modules/search/views/page_search.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                          function( $ocLazyLoad){
+                              return $ocLazyLoad.load('modules/search/controllers/SearchController.js');
+                          }]
+                  }
               })
               .state('app.page.invoice', {
                   url: '/invoice',
@@ -313,21 +352,21 @@ angular.module('app')
               })
               .state('access.signin', {
                   url: '/signin',
-                  templateUrl: 'tpl/page_signin.html',
+                  templateUrl: 'modules/user/views/page_signin.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
-                          return uiLoad.load( ['js/controllers/signin.js'] );
+                          return uiLoad.load( ['modules/user/controllers/signin.js'] );
                       }]
                   }
               })
               .state('access.signup', {
                   url: '/signup',
-                  templateUrl: 'tpl/page_signup.html',
+                  templateUrl: 'modules/user/views/page_signup.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
-                          return uiLoad.load( ['js/controllers/signup.js'] );
+                          return uiLoad.load( ['modules/user/controllers/signup.js'] );
                       }]
                   }
               })

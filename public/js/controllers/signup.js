@@ -12,7 +12,8 @@ app.controller('SignupFormController', ['$scope', '$http', '$state','userService
         if ( !response.data.user ) {
           $scope.authError = response;
         }else{
-            userService.setCookieData(response.data.user.username);
+            userService.setCookieData(response.data.user);
+            console.log(userService.getCookieData());
             $state.go('app.dashboard-v1');
         }
       }, function(x) {

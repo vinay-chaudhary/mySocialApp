@@ -11,10 +11,29 @@
   <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
+  <link rel="stylesheet" href="libs/angular-upload/src/directives/btnUpload.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/angular-tour/dist/angular-tour.css" type="text/css"/>
 </head>
 <body ng-controller="AppCtrl">
   <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
-
+  <tour step="currentStep">
+    <virtual-step tourtip="You can post here" tourtip-element="#tip1" tourtip-placement="right"></virtual-step>
+    <virtual-step tourtip="By here you can see your profile" tourtip-element="#tip2" tourtip-placement="right"></virtual-step>
+    <virtual-step tourtip="You can use it as an attribute on your element" tourtip-element="#input1"></virtual-step>
+    <virtual-step
+            tourtip="Full options"
+            tourtip-step="2"
+            tourtip-next-label="Next"
+            tourtip-placement="right"
+            tourtip-container-element="body"
+            tourtip-margin="0"
+            tourtip-offset-vertical="0"
+            tourtip-offset-horizontal="0"
+            on-show="someFunc"
+            on-proceed="someFunc"
+            use-source-scope="false"
+            tourtip-element="#full1"></virtual-step>
+  </tour>
 
   <!-- jQuery -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -40,6 +59,13 @@
   <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
   <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
   <script src="vendor/angular/angular-translate/storage-local.js"></script>
+  <script src="libs/angular-upload/angular-upload.min.js"></script>
+  <script src="libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+  <script src="libs/spin.js/spin.js"></script>
+  <script src="libs/angular-spinner/angular-spinner.js"></script>
+  <script src="libs/angular-tour/dist/angular-tour-tpls.min.js"></script>
+  <!--<script src="libs/angular-tour/dist/angular-tour.min.js"></script>-->
+
 
   <!-- App -->
   <script src="js/app.js"></script>
@@ -50,6 +76,7 @@
   <script src="js/services/ui-load.js"></script>
   <script src="js/services/cookieService.js"></script>
   <script src="js/filters/fromNow.js"></script>
+  <script src="js/directives/myenter.js"></script>
   <script src="js/directives/setnganimate.js"></script>
   <script src="js/directives/ui-butterbar.js"></script>
   <script src="js/directives/ui-focus.js"></script>
