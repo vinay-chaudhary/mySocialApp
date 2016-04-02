@@ -22,7 +22,7 @@ angular.module('app')
           warning: '#fad733',
           danger:  '#f05050',
           light:   '#e8eff0',
-          dark:    '#3a3f51',
+          dark:    '#0A40D8',
           black:   '#1c2b36'
         },
         settings: {

@@ -26,7 +26,7 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['modules/core/controllers/signout.js']);
+                        return $ocLazyLoad.load(['modules/core/controllers/signout.js','modules/core/controllers/main.js']);
                     }]
                   }
               })

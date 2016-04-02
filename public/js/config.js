@@ -64,4 +64,10 @@ angular.module('app')
     usSpinnerConfigProvider.setTheme('smallRed', {color: 'red', radius: 6, top:50,left:75,position:'absolute'});
     usSpinnerConfigProvider.setTheme('mySpinLoader', {color: 'red', radius: 6, top:50,left:75,position:'relative'});
 
-}]);
+}])
+
+.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}
+]);

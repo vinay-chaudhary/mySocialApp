@@ -232,6 +232,9 @@ router.post('/api/comment',function(req,res){
     })
 
 })
+router.get('/api/getdata',function(req,res){
+    res.send({user:req.user});
+})
     router.post('/api/login', function(req,res,next){
 
           passport.authenticate('local', function(err, user, info) {
@@ -261,12 +264,13 @@ router.post('/api/comment',function(req,res){
     // router.get('*',function(req,res){
     //  res.sendfile('./public/index.html');
     // });
-    router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    router.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 
     // handle the callback after facebook has authenticated the user
     router.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
+
+            successRedirect : '/#/app/dashboard-v1',
             failureRedirect : '/'
         })
     );
@@ -276,7 +280,26 @@ router.post('/api/comment',function(req,res){
       res.status(200).json({
         status: 'Bye!'
       });
-    });    
+    });
+router.get('/auth/twitter',
+    passport.authenticate('twitter')
+);
+
+    	// handle the callback after facebook has authenticated the user
+router.get('/auth/twitter/callback',
+    passport.authenticate('twitter', {
+        successRedirect : '//#/app/dashboard-v1',
+        failureRedirect : '/'
+    })
+);
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+// the callback after google has authenticated the user
+router.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect : '/#/app/dashboard-v1',
+        failureRedirect : '/'
+    }));
     
 
 

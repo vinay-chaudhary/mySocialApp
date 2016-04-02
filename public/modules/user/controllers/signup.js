@@ -18,6 +18,27 @@ app.controller('SignupFormController', ['$scope', '$http', '$state','userService
       }, function(x) {
         $scope.authError = 'Server Error';
       });
+
     };
+
+
+    $scope.signFacebook=function(){
+        console.log('hello');
+
+        $http.get('/auth/facebook')
+            .then(function(response) {
+                console.log('got the response',response); return false;
+
+                if ( !response.data.user ) {
+                    $scope.authError = response;
+                }else{
+                    console.log('got the response',response);
+                    userService.setCookieData(response.data.user);
+                    $state.go('app.dashboard-v1');
+                }
+            }, function(x) {
+                $scope.authError = 'Server Error';
+            });
+    }
   }])
  ;

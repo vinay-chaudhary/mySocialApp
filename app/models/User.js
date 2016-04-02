@@ -11,9 +11,33 @@ var User = new Schema({
 		required:'Name is Required'
 	},
 	username:{
-		type:String,
-		unique:'E-mail already exists',
-		required:'Email is Required'
+		type:String
+	},
+	facebook:{
+		id:{
+			type:String
+		},
+		token:{
+			type:String
+		}
+
+	},
+	twitter:{
+		id:{
+			type:String
+		},
+		token:{
+			type:String
+		}
+	},
+	google:{
+		id:{
+			type:String
+		},
+		token:{
+			type:String
+		}
+
 	},
 	password:{type:String},
 	dob:{type:Date},
@@ -21,6 +45,10 @@ var User = new Schema({
 	userType: {
 		type: Schema.ObjectId,
 		ref: 'UserType'
+	},
+	isVisited:{
+		type:Boolean,
+		default:false
 	},
 	roles: [{
 		type: Schema.ObjectId,
